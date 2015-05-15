@@ -1,0 +1,9 @@
+.colorpicker {
+  z-index: 2500 !important;
+  min-width: 130px !important;
+  padding: 4px !important;
+  margin-top: 1px !important;
+  -webkit-border-radius: 4px !important;
+  -moz-border-radius: 4px !important;
+  border-radius: 4px !important;
+}
