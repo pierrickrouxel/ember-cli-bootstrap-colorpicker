@@ -2,6 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
-  color: '#FF0000'
+  color: '#ff0000'
 
 });
