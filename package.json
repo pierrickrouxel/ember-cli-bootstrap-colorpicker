@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-bootstrap-colorpicker",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Bootstrap colorpicker for Ember",
   "directories": {
     "doc": "doc",
@@ -15,7 +15,7 @@
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "Pierrick Rouxel",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.2",
