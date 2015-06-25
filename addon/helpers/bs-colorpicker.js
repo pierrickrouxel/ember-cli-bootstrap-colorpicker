@@ -87,7 +87,7 @@ export default function(options) {
 
   colorpicker.didInsertElement();
 
-  options.data.view.on('willDestroyElement', function() {
+  options.data.view.one('willDestroyElement', function() {
     colorpicker.willDestroyElement();
   });
 }
