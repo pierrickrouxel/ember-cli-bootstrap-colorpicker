@@ -1,16 +1,9 @@
 import Ember from 'ember';
 
-var $ = Ember.$;
+const { $, observer } = Ember;
 
-var BsColorpicker = Ember.Object.extend({
-
-  $: function(selector) {
-    if (selector) {
-      return $(this.get('element')).find(selector);
-    } else {
-      return $(this.get('element'));
-    }
-  },
+export default Ember.Component.extend({
+  attributeBindings: ['title', 'style', 'type'],
 
   didInsertElement: function() {
     this._initializeValues();
@@ -34,14 +27,14 @@ var BsColorpicker = Ember.Object.extend({
     }
   },
 
-  didChangeColorFromProperty: function() {
+  didChangeColorFromProperty: observer('color', function() {
     // Prevent changing color if value is already set
     var color = this.$().data('colorpicker').color;
     if (this.get('color') !== color.toString(this.get('format'))) {
-      color.setColor(this.get('color') || '#000000');
+      color.setColor(this.get('color') || '#000000');
       this.$().colorpicker('update');
     }
-  },
+  }),
 
   // If value of input is empty, the colorpicker doesn't initialize properly
   _initializeValues: function() {
@@ -54,40 +47,5 @@ var BsColorpicker = Ember.Object.extend({
       }
     }
     this.$().data('color', color);
-  },
-
+  }
 });
-
-export default function(options) {
-  var hash = options.hash;
-  var element = options.element;
-  var view = options.data.view;
-  var stream = view.getStream(hash.color);
-
-  var colorpicker = BsColorpicker.create({
-    element: element,
-    format: hash.format,
-    align: hash.align
-  });
-
-  // Add computed property for color
-  Ember.defineProperty(colorpicker, 'color', Ember.computed({
-    set: function(key, value) {
-      stream.setValue(value);
-      return value;
-    },
-    get: function() {
-      return stream.value();
-    }
-  }).volatile());
-
-  stream.subscribe(function() {
-    colorpicker.didChangeColorFromProperty();
-  });
-
-  colorpicker.didInsertElement();
-
-  options.data.view.one('willDestroyElement', function() {
-    colorpicker.willDestroyElement();
-  });
-}

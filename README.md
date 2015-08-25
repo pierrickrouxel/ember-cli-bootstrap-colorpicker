@@ -11,19 +11,19 @@ Bootstrap colorpicker for Ember. This component is based on [mjolnic-bootstrap-c
 With an input:
 
 ```handlebars
-<input type="text" {{bs-colorpicker color=color format='hex'}}>
+{{bs-colorpicker tagName="input" type="text" color=color format="hex" }}
 ```
 
 With an input addon:
 
 ```handlebars
-<div class="input-group" {{bs-colorpicker color=color format='hex'}}>
+{{#bs-colorpicker color=color format="hex" classNames="input-group"}}
   <input type="text" class="form-control">
   <span class="input-group-addon"><i></i></span>
-</div>
+{{/bs-colorpicker}}
 ```
 
-You can use this helper with what you want. It simply initializes the colorpicker on the tag.
+You can use this component with what you want. It simply initializes the colorpicker on the element.
 
 ## Running
 

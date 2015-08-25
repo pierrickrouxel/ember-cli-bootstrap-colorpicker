@@ -3,7 +3,7 @@
 
     <div class="row">
       <div class="col-sm-6">
-        <input class="form-control" type="text" {{bs-colorpicker color=color format='hex'}}>
+        {{bs-colorpicker color=color format="hex" type="text" classNames="form-control" tagName="input"}}
       </div>
 
       <div class="col-sm-6">
@@ -11,12 +11,14 @@
       </div>
     </div>
 
-    <div class="input-group" {{bs-colorpicker color=color format='hex'}}>
+    {{#bs-colorpicker color=color format="hex" classNames="input-group"}}
       <input type="text" class="form-control">
       <span class="input-group-addon"><i></i></span>
-    </div>
+    {{/bs-colorpicker}}
 
-    <button {{bs-colorpicker color=color format='hex'}} type="button" class="btn btn-default" style="background-color: {{color}}">Change color</button>
+    {{#bs-colorpicker color=color format="hex" style=colorStyle classNames="btn btn-default"}}
+      Change color
+    {{/bs-colorpicker}}
 
   </form>
 </div>
