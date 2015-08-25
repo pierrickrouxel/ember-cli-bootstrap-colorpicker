@@ -28,11 +28,13 @@ export default Ember.Component.extend({
   },
 
   didChangeColorFromProperty: observer('color', function() {
-    // Prevent changing color if value is already set
-    var color = this.$().data('colorpicker').color;
-    if (this.get('color') !== color.toString(this.get('format'))) {
-      color.setColor(this.get('color') || '#000000');
-      this.$().colorpicker('update');
+    if (this.get('element')) {
+      // Prevent changing color if value is already set
+      var color = this.$().data('colorpicker').color;
+      if (this.get('color') !== color.toString(this.get('format'))) {
+        color.setColor(this.get('color') || '#000000');
+        this.$().colorpicker('update');
+      }
     }
   }),
 
