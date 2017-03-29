@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-bootstrap-colorpicker",
-  "version": "2.0.0-beta1",
+  "version": "2.0.0-beta2",
   "description": "Bootstrap colorpicker for Ember",
   "directories": {
     "doc": "doc",
