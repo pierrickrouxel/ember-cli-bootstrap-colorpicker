@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-bootstrap-colorpicker",
-  "version": "2.0.0-beta2",
+  "version": "2.5.1",
   "description": "Bootstrap colorpicker for Ember",
   "directories": {
     "doc": "doc",
@@ -18,8 +18,10 @@
   "author": "Pierrick Rouxel",
   "license": "MIT",
   "devDependencies": {
+    "bootstrap": "^3.3.7",
     "broccoli-asset-rev": "^2.4.5",
     "ember-ajax": "^3.0.0",
+    "ember-bootstrap": "^1.0.0-rc.2",
     "ember-cli": "~2.15.1",
     "ember-cli-dependency-checker": "^2.0.0",
     "ember-cli-eslint": "^4.0.0",
@@ -35,13 +37,15 @@
     "ember-load-initializers": "^1.0.0",
     "ember-resolver": "^4.0.0",
     "ember-source": "~2.15.0",
-    "ember-strap": "git://github.com/pierrickrouxel/ember-strap.git#master",
     "loader.js": "^4.2.3"
   },
   "keywords": [
     "ember-addon"
   ],
   "dependencies": {
+    "bootstrap-colorpicker": "^2.5.1",
+    "broccoli-funnel": "^2.0.1",
+    "broccoli-merge-trees": "^2.0.0",
     "ember-cli-babel": "^6.3.0"
   },
   "ember-addon": {
