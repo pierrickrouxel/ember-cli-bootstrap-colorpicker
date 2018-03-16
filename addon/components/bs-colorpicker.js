@@ -1,15 +1,14 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { observer } from '@ember/object';
 
-const { $, observer } = Ember;
-
-export default Ember.Component.extend({
+export default Component.extend({
   attributeBindings: ['title', 'style', 'type'],
 
   didInsertElement: function() {
     this._initializeValues();
     this.$().colorpicker(this.getProperties('color', 'format', 'align', 'container', 'customClass', 'sliders'));
-    this.$().on('changeColor', $.proxy(this.didChangeColorFromComponent, this));
-    this.$().on('showPicker', $.proxy(this.didChangeColorFromComponent, this));
+    this.$().on('changeColor', this.didChangeColorFromComponent.bind(this));
+    this.$().on('showPicker', this.didChangeColorFromComponent.bind(this));
   },
 
   willDestroyElement: function() {
