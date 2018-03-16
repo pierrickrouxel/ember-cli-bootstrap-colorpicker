@@ -11,12 +11,12 @@
       </div>
     </div>
 
-    {{#bs-colorpicker color=color format="hex" classNames="input-group"}}
+    {{#bs-colorpicker color=color format="hex" classNames="input-group" onChange=(action (mut color))}}
       <input type="text" class="form-control">
       <span class="input-group-addon"><i></i></span>
     {{/bs-colorpicker}}
 
-    {{#bs-colorpicker color=color format="hex" style=colorStyle classNames="btn btn-default"}}
+    {{#bs-colorpicker color=color format="hex" style=colorStyle classNames="btn btn-default" onChange=(action (mut color))}}
       Change color
     {{/bs-colorpicker}}
 

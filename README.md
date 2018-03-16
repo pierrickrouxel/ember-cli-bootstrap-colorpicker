@@ -7,18 +7,33 @@ Installation
 
 * `ember install ember-cli-bootstrap-colorpicker`
 
+## BREAKING CHANGE for version 3
+
+Two-way bindings are replaced by data down, actions up (DDAU).
+See: http://emberjs.com/blog/2015/06/12/ember-1-13-0-released.html#toc_ember-2-0-beta
+
+Before:
+```handlebars
+{{bs-colorpicker tagName="input" type="text" color=color format="hex"}}
+```
+
+After:
+```handlebars
+{{bs-colorpicker tagName="input" type="text" color=color format="hex" onChange=(action (mut color))}}
+```
+
 ## Usage
 
 With an input:
 
 ```handlebars
-{{bs-colorpicker tagName="input" type="text" color=color format="hex" }}
+{{bs-colorpicker tagName="input" type="text" color=color format="hex" onChange=(action (mut color))}}
 ```
 
 With an input addon:
 
 ```handlebars
-{{#bs-colorpicker color=color format="hex" classNames="input-group"}}
+{{#bs-colorpicker color=color format="hex" classNames="input-group" onChange=(action (mut color))}}
   <input type="text" class="form-control">
   <span class="input-group-addon"><i></i></span>
 {{/bs-colorpicker}}

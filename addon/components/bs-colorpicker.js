@@ -4,6 +4,8 @@ import { observer } from '@ember/object';
 export default Component.extend({
   attributeBindings: ['title', 'style', 'type'],
 
+  onChange() {},
+
   didInsertElement: function() {
     this._initializeValues();
     this.$().colorpicker(this.getProperties('color', 'format', 'align', 'container', 'customClass', 'sliders'));
@@ -20,10 +22,7 @@ export default Component.extend({
   didChangeColorFromComponent: function(event) {
     var componentColor = event.color.toString(this.get('format'));
 
-    // Prevent changing color if component is already set
-    if (componentColor !== this.get('color')) {
-      this.set('color', componentColor);
-    }
+    this.get('onChange')(componentColor);
   },
 
   didChangeColorFromProperty: observer('color', function() {
