@@ -3,7 +3,13 @@
 const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
 module.exports = function(defaults) {
-  let app = new EmberAddon(defaults);
+  let app = new EmberAddon(defaults, {
+    'ember-bootstrap': {
+      'bootstrapVersion': 3,
+      'importBootstrapFont': true,
+      'importBootstrapCSS': true
+    },
+  });
 
   /*
     This build file specifies the options for the dummy test app of this
