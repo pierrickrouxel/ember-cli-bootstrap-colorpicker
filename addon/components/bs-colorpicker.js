@@ -20,19 +20,24 @@ export default Component.extend({
   },
 
   didChangeColorFromComponent: function(event) {
-    var componentColor = event.color.toString(this.get('format'));
-
-    this.get('onChange')(componentColor);
+    if (!this.get('isChangingFromProperty')) {
+      var componentColor = event.color.toString(this.get('format'));
+      this.get('onChange')(componentColor);
+    } 
   },
 
   didChangeColorFromProperty: observer('color', function() {
     if (this.get('element')) {
+      this.set('isChangingFromProperty', true);
+  
       // Prevent changing color if value is already set
       var color = this.$().data('colorpicker').color;
       if (this.get('color') !== color.toString(this.get('format'))) {
         color.setColor(this.get('color') || '#000000');
         this.$().colorpicker('update');
       }
+      
+      this.set('isChangingFromProperty', false);
     }
   }),
 
