@@ -26,10 +26,11 @@ module.exports = {
     let pkg = parts[0];
     let root = '';
     // when an engine is building, this.app is undefined...
+    // but this.project seems to be consistently defined.
     if (this.project && this.project.root) {
       root = this.project.root;
     } else {
-      console.error(`ember-cli-bootstrap-colorpicker unable to locate the project root!`);
+      console.error(`ember-cli-bootstrap-colorpicker unable to locate the project root!`); // eslint-disable-line no-console
     }
 
 
