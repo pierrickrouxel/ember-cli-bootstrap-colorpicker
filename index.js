@@ -21,9 +21,20 @@ module.exports = {
   },
 
   resolvePackagePath(pkgPath) {
+
     let parts = pkgPath.split('/');
     let pkg = parts[0];
-    let result = path.dirname(resolve.sync(`${pkg}/package.json`, { basedir: this.app.project.root }));
+    let root = '';
+    // when an engine is building, this.app is undefined...
+    // but this.project seems to be consistently defined.
+    if (this.project && this.project.root) {
+      root = this.project.root;
+    } else {
+      console.error(`ember-cli-bootstrap-colorpicker unable to locate the project root!`); // eslint-disable-line no-console
+    }
+
+
+    let result = path.dirname(resolve.sync(`${pkg}/package.json`, { basedir: root }));
 
     // add sub folders to path
     if (parts.length > 1) {
